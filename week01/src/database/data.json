@@ -5,13 +5,13 @@
         "title": "Man Blue Shoe",
         "category": "Men's Running Shoes ",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
-        "star": "4.5",
+        "star": 5,
         "sizeOfPrice": [
-          { "id": 1, "size": 40, "price": 150 },
-          { "id": 2, "size": 41, "price": 170 },
-          { "id": 3, "size": 42, "price": 180 },
-          { "id": 4, "size": 43, "price": 190 },
-          { "id": 5, "size": 44, "price": 200 }
+          { "id": 1, "size": 29, "price": 150 },
+          { "id": 2, "size": 30, "price": 170 },
+          { "id": 3, "size": 31, "price": 180 },
+          { "id": 4, "size": 32, "price": 190 },
+          { "id": 5, "size": 33, "price": 200 }
         ],
         "selectedPriceId": 1,
         "piece": 1,
@@ -23,13 +23,13 @@
         "title": "Women Pink Shoe",
         "category": "Women's Running Shoes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
-        "star": "3.5",
+        "star": 3,
         "sizeOfPrice": [
-          { "id": 1, "size": 36, "price": 150 },
-          { "id": 2, "size": 37, "price": 170 },
-          { "id": 3, "size": 38, "price": 180 },
-          { "id": 4, "size": 39, "price": 190 },
-          { "id": 5, "size": 40, "price": 200 }
+          { "id": 1, "size": 29, "price": 150 },
+          { "id": 2, "size": 30, "price": 170 },
+          { "id": 3, "size": 31, "price": 180 },
+          { "id": 4, "size": 32, "price": 190 },
+          { "id": 5, "size": 33, "price": 200 }
         ],
         "selectedPriceId": 1,
         "piece": 1,
@@ -41,13 +41,13 @@
         "title": "Man Blue Shoe",
         "category": "Men's Training Shoes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
-        "star": "4",
+        "star": 4,
         "sizeOfPrice": [
-          { "id": 1, "size": 40, "price": 150 },
-          { "id": 2, "size": 41, "price": 170 },
-          { "id": 3, "size": 42, "price": 180 },
-          { "id": 4, "size": 43, "price": 190 },
-          { "id": 5, "size": 44, "price": 200 }
+          { "id": 1, "size": 29, "price": 150 },
+          { "id": 2, "size": 30, "price": 170 },
+          { "id": 3, "size": 31, "price": 180 },
+          { "id": 4, "size": 32, "price": 190 },
+          { "id": 5, "size": 33, "price": 200 }
         ],
         "selectedPriceId": 1,
         "piece": 1,
@@ -60,13 +60,13 @@
         "title": "Woman Pink Shoe",
         "category": "Women's Training Shoes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
-        "star": "2.5",
+        "star": 2,
         "sizeOfPrice": [
-          { "id": 1, "size": 36, "price": 150 },
-          { "id": 2, "size": 37, "price": 170 },
-          { "id": 3, "size": 38, "price": 180 },
-          { "id": 4, "size": 39, "price": 190 },
-          { "id": 5, "size": 40, "price": 200 }
+          { "id": 1, "size": 29, "price": 150 },
+          { "id": 2, "size": 30, "price": 170 },
+          { "id": 3, "size": 31, "price": 180 },
+          { "id": 4, "size": 32, "price": 190 },
+          { "id": 5, "size": 33, "price": 200 }
         ],
         "selectedPriceId": 1,
         "piece": 1,
