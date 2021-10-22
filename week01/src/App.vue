@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <the-header />
+    <b-container>
+      <!-- d-flex align-items-stretch flex-wrap -->
+    <b-row>
+      <b-col class="d-flex align-items-stretch flex-wrap">
+         <product-card
+      v-for="product in products"
+      :key="product.id"
+      :product="product"
+    />
+      </b-col>
+    </b-row>
+   
+    </b-container>
   </div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TheHeader from "./components/Header.vue";
+import ProductCard from "./components/ProductCard.vue";
+import data from "./database/data.json";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    TheHeader,
+    ProductCard,
+  },
+
+  data() {
+    return {
+      products: [...data.products],
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
