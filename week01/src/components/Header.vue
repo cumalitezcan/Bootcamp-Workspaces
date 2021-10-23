@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Home</a>
         <button
@@ -25,11 +25,12 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-               <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-shopping-cart fa-lg"></i>
+                <span class="badge bg-light text-danger fs-5">1</span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li v-for="(c,index) in cart" :key="index"><a class="dropdown-item" href="#">{{c.title}}</a></li>
+
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="#">Something else here</a>
@@ -40,12 +41,21 @@
         </div>
       </div>
     </nav>
+  <ul id="example-1">
+  
+</ul>
   </div>
 </template>
 
 <script>
 export default {
   name: "Header",
+
+  methods: {
+    props: {
+      cart: Array,
+    },
+  },
 };
 </script>
 

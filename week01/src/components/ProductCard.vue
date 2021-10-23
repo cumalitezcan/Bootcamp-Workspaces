@@ -1,4 +1,7 @@
 <template>
+
+
+
   <div class="row d-flex justify-content-between align-items-center">
     <div class="col offset-3">
       <div class="card m-3" :class="bgColor" style="width: 450px;">
@@ -16,7 +19,7 @@
                 <label
                   class="btn btn-secondary btn-sm"
                   :class="buttonColor"
-                  :for="index"
+                  :for="size.price + index"
                   >{{ size.size }}
                 </label>
 
@@ -25,7 +28,7 @@
                   class="btn-check"
                   name="size"
                   :value="size.price"
-                  :id="index"
+                  :id="size.price + index"
                   v-model="selectedSize"
                 />
               </span>
@@ -41,7 +44,9 @@
               <p class="card-text">
                 {{ product.title }}
               </p>
-              <p class="card-text" :class="priceColor">{{ selectedSize ? selectedSize : "150" }} $</p>
+              <p class="card-text" :class="priceColor">
+                {{ selectedSize ? selectedSize : defaultPrice }} $
+              </p>
               <h6 class="card-text">
                 {{ product.description }}
               </h6>
@@ -71,9 +76,14 @@
                   />
                 </span>
               </div>
-              <button :class="buttonColor" class="btn" @click="addToCart">
+              <button
+                :class="buttonColor"
+                class="btn"
+                @click="addToCart"
+              >
                 Add to Cart
               </button>
+              {{ cart.length }}
             </div>
           </div>
         </div>
@@ -96,11 +106,20 @@ export default {
     return {
       selectOptions: [...data.selectOptions],
       selectedSize: null,
+      cart: [],
     };
   },
   methods: {
-    addToCart() {
-      alert("eklendi")
+    findProduct(productId) {
+      return this.products.find((product) => product.id == productId);
+    },
+    selectNumber(productId, numberId) {
+      let selectedProduct = this.findProduct(productId);
+      selectedProduct.selectedPriceId = numberId;
+    },
+    addToCart(product) {
+      console.log(product);
+      this.$emit("addToCart", product);
     },
   },
   computed: {
@@ -121,7 +140,9 @@ export default {
       return this.product.color === "blue" ? "blue-category" : "pink-category";
     },
 
-
+    defaultPrice() {
+      return this.product.sizeOfPrice[0].price;
+    },
   },
 };
 </script>
@@ -158,38 +179,37 @@ export default {
   background-color: #d5f3fe !important;
 }
 
-.pink-price{
-  font-size:30px;
+.pink-price {
+  font-size: 30px;
   color: #d3adac;
   font-weight: 900;
   text-align: left;
 }
-.pink-category{
-  font-size:15px;
+.pink-category {
+  font-size: 15px;
   text-align: left;
   color: #d3adac;
-  font-weight: 700
+  font-weight: 700;
 }
-.pink-title{
+.pink-title {
   font-size: 25px;
   text-align: left;
 }
-.pink-description{
-  font-size:12px;
-  text-align:left;
+.pink-description {
+  font-size: 12px;
+  text-align: left;
 }
 
-.blue-price{
-  font-size:30px;
+.blue-price {
+  font-size: 30px;
   font-weight: 900;
-  color: #0F5298;
+  color: #0f5298;
   text-align: left;
 }
-.blue-category{
-  font-size:15px;
+.blue-category {
+  font-size: 15px;
   text-align: left;
-  color: #0F5298;
-  font-weight: 700
+  color: #0f5298;
+  font-weight: 700;
 }
-
 </style>

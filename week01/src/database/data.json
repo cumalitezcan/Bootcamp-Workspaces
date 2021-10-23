@@ -7,73 +7,76 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
         "star": 5,
         "sizeOfPrice": [
-          { "id": 1, "size": 29, "price": 150 },
-          { "id": 2, "size": 30, "price": 170 },
-          { "id": 3, "size": 31, "price": 180 },
-          { "id": 4, "size": 32, "price": 190 },
-          { "id": 5, "size": 33, "price": 200 }
+          { "id": 1, "size": 40, "price": 120 },
+          { "id": 2, "size": 41, "price": 125 },
+          { "id": 3, "size": 42, "price": 127 },
+          { "id": 4, "size": 43, "price": 130 },
+          { "id": 5, "size": 44, "price": 131 }
         ],
         "selectedPriceId": 1,
         "piece": 1,
         "color":"blue",
         "imageUrl":"https://cdn.discordapp.com/attachments/897079486246445063/899265105605316648/NIKE-EPIC-REACT-FLYKNIT-BLUE-GLOWWHITE-PHOTO-BLUE-VOLT-GLOW-2-e1525801871490.jpg"
       },
+     
       {
         "id": 2,
-        "title": "Women Pink Shoe",
-        "category": "Women's Running Shoes",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
-        "star": 3,
-        "sizeOfPrice": [
-          { "id": 1, "size": 29, "price": 150 },
-          { "id": 2, "size": 30, "price": 170 },
-          { "id": 3, "size": 31, "price": 180 },
-          { "id": 4, "size": 32, "price": 190 },
-          { "id": 5, "size": 33, "price": 200 }
-        ],
-        "selectedPriceId": 1,
-        "piece": 1,
-        "color":"pink",
-        "imageUrl":"https://cdn.discordapp.com/attachments/897079486246445063/899265104225382440/Nike-Epic-React-Flyknit-Pearl-Pink-01.jpg"
-      },
-      {
-        "id": 3,
-        "title": "Man Blue Shoe",
-        "category": "Men's Training Shoes",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
-        "star": 4,
-        "sizeOfPrice": [
-          { "id": 1, "size": 29, "price": 150 },
-          { "id": 2, "size": 30, "price": 170 },
-          { "id": 3, "size": 31, "price": 180 },
-          { "id": 4, "size": 32, "price": 190 },
-          { "id": 5, "size": 33, "price": 200 }
-        ],
-        "selectedPriceId": 1,
-        "piece": 1,
-        "color":"blue",
-        "imageUrl":"https://cdn.discordapp.com/attachments/897079486246445063/899265105605316648/NIKE-EPIC-REACT-FLYKNIT-BLUE-GLOWWHITE-PHOTO-BLUE-VOLT-GLOW-2-e1525801871490.jpg"
-  
-      },
-      {
-        "id": 4,
         "title": "Woman Pink Shoe",
         "category": "Women's Training Shoes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
         "star": 2,
         "sizeOfPrice": [
-          { "id": 1, "size": 29, "price": 150 },
-          { "id": 2, "size": 30, "price": 170 },
-          { "id": 3, "size": 31, "price": 180 },
-          { "id": 4, "size": 32, "price": 190 },
-          { "id": 5, "size": 33, "price": 200 }
+          { "id": 1, "size": 36, "price": 150 },
+          { "id": 2, "size": 37, "price": 152 },
+          { "id": 3, "size": 38, "price": 160 },
+          { "id": 4, "size": 39, "price": 163 },
+          { "id": 5, "size": 40, "price": 167 }
         ],
         "selectedPriceId": 1,
         "piece": 1,
         "color":"pink",
         "imageUrl":"https://cdn.discordapp.com/attachments/897079486246445063/899265104225382440/Nike-Epic-React-Flyknit-Pearl-Pink-01.jpg"
   
+      },
+      {
+        "id": 3,
+        "title": "Women Pink Shoe",
+        "category": "Women's Running Shoes",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
+        "star": 3,
+        "sizeOfPrice": [
+          { "id": 1, "size": 36, "price": 220 },
+          { "id": 2, "size": 37, "price": 228 },
+          { "id": 3, "size": 38, "price": 230 },
+          { "id": 4, "size": 39, "price": 233 },
+          { "id": 5, "size": 40, "price": 237 }
+        ],
+        "selectedPriceId": 1,
+        "piece": 1,
+        "color":"pink",
+        "imageUrl":"https://cdn.discordapp.com/attachments/897079486246445063/899265104225382440/Nike-Epic-React-Flyknit-Pearl-Pink-01.jpg"
+      },
+      {
+        "id": 4,
+        "title": "Man Blue Shoe",
+        "category": "Men's Training Shoes",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
+        "star": 4,
+        "sizeOfPrice": [
+          { "id": 1, "size": 40, "price": 250 },
+          { "id": 2, "size": 41, "price": 257 },
+          { "id": 3, "size": 42, "price": 261 },
+          { "id": 4, "size": 43, "price": 266 },
+          { "id": 5, "size": 44, "price": 270 }
+        ],
+        "selectedPriceId": 1,
+        "piece": 1,
+        "color":"blue",
+        "imageUrl":"https://cdn.discordapp.com/attachments/897079486246445063/899265105605316648/NIKE-EPIC-REACT-FLYKNIT-BLUE-GLOWWHITE-PHOTO-BLUE-VOLT-GLOW-2-e1525801871490.jpg"
+  
       }
+     
+     
     ],
     "cart": [],
     "selectOptions": [
