@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <div class="container-fluid">
-      <div class="d-flex align-items-stretch flex-wrap">
-        <ProductCard :products="products" @addToCart="addToCart" :cart="cart" />
-        </div>
+    
+         <div class="d-flex align-items-stretch flex-wrap">
+        <ProductCard class="offset-1 me-5" :products="products" @addToCart="addToCart" :cart="cart" />
       </div>
     </div>
   

@@ -1,6 +1,5 @@
 <template>
   <div class="row d-flex justify-content-between align-items-center">
-    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a class="navbar-brand" href="#">Home</a>
@@ -42,7 +41,10 @@
                     <span class="text fs-6 fw-bold"
                       >1-Piece:{{ c.selectedPrice.price }}$</span
                     >
-                    <button @click="increment(c)" class="btn btn-success btn-sm">
+                    <button
+                      @click="increment(c)"
+                      class="btn btn-success btn-sm"
+                    >
                       +
                     </button>
                   </div>
@@ -63,9 +65,14 @@
                       Clear All
                     </button>
                   </li>
-                  
+
                   <li class="text-center">
-                    <button @click="buy()" class="text-center btn btn-outline-primary">Buy</button>
+                    <button
+                      @click="buy()"
+                      class="text-center btn btn-outline-primary"
+                    >
+                      Buy
+                    </button>
                   </li>
                 </div>
               </ul>
@@ -73,9 +80,8 @@
           </ul>
         </div>
       </div>
-      
     </nav>
-      
+
     <div
       v-for="(product, index) in products"
       :key="index"
