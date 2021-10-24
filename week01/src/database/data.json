@@ -60,7 +60,7 @@
         "id": 4,
         "title": "Man Blue Shoe",
         "category": "Men's Training Shoes",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel risus accumsan dignissim ullamcorper quis ",
         "star": 4,
         "sizeOfPrice": [
           { "id": 1, "size": 40, "price": 250 },

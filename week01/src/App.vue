@@ -1,52 +1,49 @@
 <template>
   <div id="app">
-    <Header :cart="cart" />
-    <div class="container">
+    <div class="container-fluid">
       <div class="d-flex align-items-stretch flex-wrap">
-        <ProductCard v-for="(product,index) in products" :key="index" :product="product" :cart="cart" @addToCart="addToCart" />
-        
+        <ProductCard :products="products" @addToCart="addToCart" :cart="cart" />
+        </div>
       </div>
     </div>
-  </div>
+  
 </template>
 
 <script>
-import Header from "./components/Header.vue";
 import ProductCard from "./components/ProductCard.vue";
 import data from "../src/database/data.json";
 export default {
   name: "App",
   components: {
-    Header,
     ProductCard,
   },
   data() {
     return {
-      products: [...data.products],
-      cart: data.cart
+      products: data.products,
+      cart: data.cart,
     };
   },
   methods: {
-    getByProduct(productId){
-     return this.products.find((product)=>product.id == productId)
+    getByProductById(productId) {
+      console.log("getByProductId");
+      return this.products.find((product) => product.id == productId);
     },
-    addToCart(product){   
-     let selectedProduct = this.getByProduct(product.id)
-     let selectedPrice = selectedProduct.sizeOfPrice.find((price)=>price.id == product.selectedPriceId)
-     let findItem = this.cart.find(
-        (x) =>
-          x.id == product.id && x.selectedPriceId == product.selectedPriceId
+    addToCart(product) {
+      let selectedProduct = this.getByProductById(product.id);
+      let selectedPrice = selectedProduct.sizeOfPrice.find(
+        (price) => price.id == product.selectedPriceId
       );
-
-       if (findItem) {
+      console.log(selectedPrice);
+      let findItem = this.cart.find( (x) => x.id == product.id && x.selectedPriceId == product.selectedPriceId);
+      if (findItem) {
+        console.log(findItem)
         findItem.piece = findItem.piece + product.piece;
       } else {
         let cartItem = { ...selectedProduct, selectedPrice };
         this.cart = [...this.cart, cartItem];
-   
-        
       }
     },
+
     deleteAll() {
       this.cart = [];
     },
@@ -58,13 +55,11 @@ export default {
         item.piece = piece - 1;
       }
     },
-     incerement(item) {
+    incerement(item) {
       let piece = item.piece;
       item.piece = piece + 1;
     },
   },
-
-  
 };
 </script>
 
