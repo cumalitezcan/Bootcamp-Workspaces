@@ -1,14 +1,23 @@
 <template>
-    <h1>Home Page</h1>
-    <HotelCard />
+  <Header />
+  <div class="container">
+    <div class="d-flex align-items-stretch flex-wrap">
+      <HotelCard />
+    </div>
+  </div>
+
+  <Footer />
 </template>
 
 <script>
-import HotelCard from "@/components/HotelCard"
+import HotelCard from "@/components/HotelCard";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export default {
-    components:{
-        HotelCard
-    }
-}
+  components: {
+    HotelCard,
+    Header,
+    Footer,
+  },
+};
 </script>
-

@@ -1,0 +1,40 @@
+{
+    "hotels":[
+        {
+            "id":1,
+            "name":"Peace Hotel",
+            "price":250,
+            "imageUrl":null,
+            "star":4,
+            "location":"Bodrum",
+            "description" : "Bodrum'un en özel yerinde olen hotelimiz güler yüzlü personeli, temiz odalar ve geniş ortak alanları ile size ferah bir ortam sağlıyor..."
+        },
+        {
+            "id":2,
+            "name":"New World Hotel",
+            "price":300,
+            "imageUrl":null,
+            "star":5,
+            "location":"Antalya",
+            "description":"Antalya'da kalitenin tek adresi Serenity Hotel... Merkeze yürüme mesafesi. Odalara ücretsiz ikramlar vb..."
+        },
+        {
+            "id":3,
+            "name":"Serenity Hotel",
+            "price":200,
+            "imageUrl":null,
+            "star":3,
+            "location":"Çeşme",
+            "description":"Çeşme'de fiyat performans açısından en güzel hotel sizleri bekliyor..."
+        },
+        {
+            "id":4,
+            "name":"New World Hotel",
+            "price":250,
+            "imageUrl":null,
+            "star":4,
+            "location":"Marmaris",
+            "description":"Marmaris'te yeni bir dünya var ve sizleri bekliyor..."
+        }
+    ]
+}
