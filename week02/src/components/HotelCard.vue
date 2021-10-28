@@ -18,7 +18,7 @@
           </div>
           <div class="text-end">
             <router-link :to="`/hotel/${hotel.id}`">
-              <button>Seç</button>
+              <button class="btn btn-success">Seç</button>
             </router-link>
           </div>
         </div>
@@ -33,7 +33,12 @@ export default {
   data() {
     return {
       data: data.hotels,
+     
     };
   },
+
+ 
+
+
 };
 </script>
