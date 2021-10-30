@@ -1,5 +1,5 @@
 <template>
-  <form class="col-md-4 p-1" @submit.prevent="afterSubmit">
+  <form class="col-md-4 p-1 formDesign" @submit.prevent="afterSubmit">
     <div class="border">
       <h3 class="text-center text-decoration-underline">X Hoteli</h3>
       <div class="row mt-2">
@@ -11,9 +11,17 @@
             id="input1"
             placeholder="XXXXXXXXXXX"
             v-model="v$.user.tcNumber.$model"
-            :class="{'is-invalid':v$.user.tcNumber.$error}"
+            :class="{ 'is-invalid': v$.user.tcNumber.$error }"
           />
-          <small class="text-center text-danger" v-if="v$.user.tcNumber.required.$invalid && v$.user.tcNumber.$error && clicked">Boş olamaz ve 11 karakter içerir</small>
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.tcNumber.required.$invalid &&
+              v$.user.tcNumber.$error &&
+              clicked
+            "
+            >Boş olamaz ve 11 karakter içerir</small
+          >
         </div>
 
         <div class="col-md-6">
@@ -23,20 +31,38 @@
             class="form-control"
             id="input2"
             placeholder="5XXXXXXXXX"
-             v-model="v$.user.phoneNumber.$model"
-            :class="{'is-invalid':v$.user.phoneNumber.$error}"
+            v-model="v$.user.phoneNumber.$model"
+            :class="{ 'is-invalid': v$.user.phoneNumber.$error }"
           />
-            <small class="text-center text-danger" v-if="v$.user.phoneNumber.required.$invalid && v$.user.phoneNumber.$error && clicked">Boş olamaz ve 10 karakter içerir</small>
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.phoneNumber.required.$invalid &&
+              v$.user.phoneNumber.$error &&
+              clicked
+            "
+            >Boş olamaz ve 10 karakter içerir</small
+          >
         </div>
       </div>
       <hr class="text-primary" />
       <div class="row mt-2">
         <div class="col-md-6">
           <label for="input4" class="form-label">Ad</label>
-          <input type="text" class="form-control" id="input4"
-           v-model="v$.user.name.$model"
-            :class="{'is-invalid':v$.user.name.$error}" />
-            <small class="text-center text-danger" v-if="v$.user.name.required.$invalid && v$.user.name.$error && clicked">Boş olamaz ve en az 3 karakter içerir</small>
+          <input
+            type="text"
+            class="form-control"
+            id="input4"
+            v-model="v$.user.name.$model"
+            :class="{ 'is-invalid': v$.user.name.$error }"
+          />
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.name.required.$invalid && v$.user.name.$error && clicked
+            "
+            >Boş olamaz ve en az 3 karakter içerir</small
+          >
         </div>
         <div class="col-md-6">
           <label for="input5" class="form-label">Soyad</label>
@@ -45,9 +71,17 @@
             class="form-control"
             id="input5"
             v-model="v$.user.surname.$model"
-            :class="{'is-invalid':v$.user.surname.$error}"
+            :class="{ 'is-invalid': v$.user.surname.$error }"
           />
-          <small class="text-center text-danger" v-if="v$.user.surname.required.$invalid && v$.user.surname.$error && clicked">Boş olamaz ve en az 3 karakter içerir</small>
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.surname.required.$invalid &&
+              v$.user.surname.$error &&
+              clicked
+            "
+            >Boş olamaz ve en az 3 karakter içerir</small
+          >
         </div>
       </div>
 
@@ -61,11 +95,18 @@
             class="form-control"
             id="input3"
             placeholder="X9X9-9999-99"
-             v-model="v$.user.hesCode.$model"
-            :class="{'is-invalid':v$.user.hesCode.$error}"
+            v-model="v$.user.hesCode.$model"
+            :class="{ 'is-invalid': v$.user.hesCode.$error }"
           />
-          <small class="text-center text-danger" v-if="v$.user.hesCode.required.$invalid && v$.user.hesCode.$error && clicked">Boş olamaz 1. ve 3. karakter harf olmak zorundadır</small>
-
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.hesCode.required.$invalid &&
+              v$.user.hesCode.$error &&
+              clicked
+            "
+            >Boş olamaz 1. ve 3. karakter harf olmak zorundadır</small
+          >
         </div>
 
         <div class="col-md-6">
@@ -75,16 +116,21 @@
             class="form-control"
             id="input6"
             v-model="v$.user.email.$model"
-            :class="{'is-invalid':v$.user.email.$error}"
+            :class="{ 'is-invalid': v$.user.email.$error }"
           />
-           <small class="text-center text-danger" v-if="v$.user.email.required.$invalid && v$.user.email.$error && clicked">Boş olamaz ve Email formatında olmalıdır</small>
-
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.email.required.$invalid && v$.user.email.$error && clicked
+            "
+            >Boş olamaz ve Email formatında olmalıdır</small
+          >
         </div>
       </div>
 
       <hr class="text-primary" />
 
-       <div class="row mt-2">
+      <div class="row mt-2">
         <div class="col-md-4">
           <label class="form-label">Cinsiyet</label>
           <div>
@@ -94,7 +140,6 @@
               id="gridRadios1"
               value="Erkek"
               v-model="user.gender"
-              
             />
             <label class="form-check-label" for="gridRadios1"> Erkek </label>
           </div>
@@ -105,19 +150,35 @@
               id="gridRadios2"
               value="Kadın"
               v-model="user.gender"
-              
             />
             <label class="form-check-label" for="gridRadios2"> Kadın </label>
-             
           </div>
-          <small class="text-center text-danger" v-if="v$.user.gender.required.$invalid && v$.user.gender.$error && clicked">Boş olamaz bir tanesini işaretleyin</small>
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.gender.required.$invalid &&
+              v$.user.gender.$error &&
+              clicked
+            "
+            >Boş olamaz bir tanesini işaretleyin</small
+          >
         </div>
         <div class="col-md-4">
           <label for="input7" class="form-label">Yaş</label>
-          <input type="number" class="form-control" id="input7"
-           v-model="v$.user.age.$model"
-            :class="{'is-invalid':v$.user.age.$error}" />
-            <small class="text-center text-danger" v-if="v$.user.age.required.$invalid && v$.user.age.$error && clicked">Boş olamaz ve Geçerli bir yaş aralığı giriniz</small>
+          <input
+            type="number"
+            class="form-control"
+            id="input7"
+            v-model="v$.user.age.$model"
+            :class="{ 'is-invalid': v$.user.age.$error }"
+          />
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.age.required.$invalid && v$.user.age.$error && clicked
+            "
+            >Boş olamaz ve Geçerli bir yaş aralığı giriniz</small
+          >
         </div>
         <div class="col-md-4">
           <label for="input8" class="form-label">Gün Sayısı</label>
@@ -125,13 +186,20 @@
             type="number"
             class="form-control"
             id="input8"
-           v-model="v$.user.numberOfDays.$model"
-            :class="{'is-invalid':v$.user.numberOfDays.$error}"
+            v-model="v$.user.numberOfDays.$model"
+            :class="{ 'is-invalid': v$.user.numberOfDays.$error }"
           />
-            <small class="text-center text-danger" v-if="v$.user.numberOfDays.required.$invalid && v$.user.numberOfDays.$error && clicked">Boş olamaz ve gün sayısı girilmelidir </small>
-
+          <small
+            class="text-center text-danger"
+            v-if="
+              v$.user.numberOfDays.required.$invalid &&
+              v$.user.numberOfDays.$error &&
+              clicked
+            "
+            >Boş olamaz ve gün sayısı girilmelidir
+          </small>
         </div>
-      </div> 
+      </div>
 
       <hr class="text-primary" />
       <div class="mt-3 d-grid gap-2 mb-2">
@@ -144,52 +212,45 @@
 </template>
 
 <script>
-import { required,minValue,minLength ,email } from "@vuelidate/validators";
+import exampleMixin from "@/mixins/FormValidation";
 import useVuelidate from "@vuelidate/core";
-import { helpers } from '@vuelidate/validators'
+import { required, minValue, minLength, email } from "@vuelidate/validators";
+import { helpers } from "@vuelidate/validators";
 
 export default {
+  mixins: [exampleMixin],
 
- 
   data() {
     return {
       v$: useVuelidate(),
-      user:{
-      tcNumber: "",
-      phoneNumber: "",
-      name: "",
-      surname: "",
-      hesCode: "",
-      email: "",
-      age: "",
-      gender : "",
-      numberOfDays: "",
-    },
-    clicked: false
-   }
-     
-     
+      user: {
+        tcNumber: "",
+        phoneNumber: "",
+        name: "",
+        surname: "",
+        hesCode: "",
+        email: "",
+        age: "",
+        gender: "",
+        numberOfDays: "",
+      },
+      clicked: false,
+    };
   },
+
   validations() {
     return {
-      user:{
-      tcNumber: { required,
-      minLength: helpers.regex(/^\d{11}$/)
+      user: {
+        tcNumber: { required, minLength: helpers.regex(/^\d{11}$/) },
+        phoneNumber: { required, minLength: helpers.regex(/^5\d{9}$/) },
+        name: { required, minLength: minLength(3) },
+        surname: { required, minLength: minLength(3) },
+        hesCode: { required },
+        email: { required, email },
+        gender: { required },
+        age: { required, minValue: minValue(6) },
+        numberOfDays: { required },
       },
-      phoneNumber: { required,
-      minLength: helpers.regex(/^5\d{9}$/) },
-      name: { required,
-      minLength: minLength(3) },
-      surname: { required,
-      minLength: minLength(3) },
-      hesCode: { required },
-      email: { required , email},
-      gender: {  required},
-      age: {  required,
-      minValue: minValue(6),
-       },
-      numberOfDays: { required },
-      }
     };
   },
 
@@ -202,11 +263,16 @@ export default {
         alert("Form failed validation");
       }
     },
-    afterSubmit(){
-      this.clicked = true
-    }
+    afterSubmit() {
+      this.clicked = true;
+    },
   },
-
-
 };
 </script>
+
+<style scoped>
+
+.formDesign {
+  background-color: #42b983;
+}
+</style>
