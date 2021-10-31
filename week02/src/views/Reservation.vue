@@ -4,7 +4,7 @@
     <h1 class="text-center">Rezervasyon Oluştur</h1>
     <div
       class="d-flex align-items-stretch flex-wrap"   >
-      <Form v-for="index in pCount" :key="index" />
+      <Form v-for="index in pCount" :key="index" :index="index" />
     </div>
   </div>
 </template>
@@ -22,12 +22,19 @@ export default {
     return {
       hId: Number(this.$route.query.hId),
       pCount: Number(this.$route.query.pCount),
+      submitCount:1,
     };
   },
 
   mounted() {
     console.log(typeof this.pCount);
   },
+
+  methods:{
+    submittedform(){
+        this.submitCount++ 
+   }
+  }
 
   //  props:["reservation"],
 

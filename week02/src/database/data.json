@@ -4,8 +4,13 @@
             "id":1,
             "name":"Peace Hotel",
             "price":250,
-            "imageUrl":null,
+            "imageUrl":"https://ucdn.tatilbudur.net/Otel/960x475/mandarin-resort-hotel_236853.jpg",
             "star":4,
+            "imageDetails":[
+                "https://ucdn.tatilbudur.net/Otel/960x475/mandarin-resort-hotel_236884.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/mandarin-resort-hotel_236891.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/mandarin-resort-hotel_236852.jpg"
+            ],
             "location":"Bodrum",
             "description" : "Bodrum'un en özel yerinde olen hotelimiz güler yüzlü personeli, temiz odalar ve geniş ortak alanları ile size ferah bir ortam sağlıyor..."
         },
@@ -13,8 +18,13 @@
             "id":2,
             "name":"New World Hotel",
             "price":300,
-            "imageUrl":null,
+            "imageUrl":"https://ucdn.tatilbudur.net/Otel/855x426/grand-park-lara_330583.jpg",
             "star":5,
+            "imageDetails":[
+                "https://ucdn.tatilbudur.net/Otel/960x475/grand-park-lara_330587.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/grand-park-lara_330590.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/grand-park-lara_372343.jpg"
+            ],
             "location":"Antalya",
             "description":"Antalya'da kalitenin tek adresi Serenity Hotel... Merkeze yürüme mesafesi. Odalara ücretsiz ikramlar vb..."
         },
@@ -22,8 +32,13 @@
             "id":3,
             "name":"Serenity Hotel",
             "price":200,
-            "imageUrl":null,
+            "imageUrl":"https://ucdn.tatilbudur.net/Otel/855x426/ayayorgi-hotel-by-t_312987.jpg",
             "star":3,
+            "imageDetails":[
+                "https://ucdn.tatilbudur.net/Otel/960x475/ayayorgi-hotel-by-t_312974.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/ayayorgi-hotel-by-t_312972.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/ayayorgi-hotel-by-t_313004.jpg"
+            ],
             "location":"Çeşme",
             "description":"Çeşme'de fiyat performans açısından en güzel hotel sizleri bekliyor..."
         },
@@ -31,8 +46,13 @@
             "id":4,
             "name":"New World Hotel",
             "price":250,
-            "imageUrl":null,
+            "imageUrl":"https://ucdn.tatilbudur.net/Otel/855x426/grand-ideal-premium-hotel_337117.jpg",
             "star":4,
+            "imageDetails":[
+                "https://ucdn.tatilbudur.net/Otel/960x475/grand-ideal-premium-hotel_337122.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/grand-ideal-premium-hotel_337118.jpg",
+                "https://ucdn.tatilbudur.net/Otel/960x475/grand-ideal-premium-hotel_337124.jpg"
+            ],
             "location":"Marmaris",
             "description":"Marmaris'te yeni bir dünya var ve sizleri bekliyor..."
         }

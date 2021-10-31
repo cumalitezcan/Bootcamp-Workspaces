@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1 class="text-center">{{ currentHotel.id }}</h1>
-    <h1 class="text-center">{{ currentHotel.name }}</h1>
-    <h1 class="text-center">{{ currentHotel.description }}</h1>
+    
+    <h1 class="text-center text-danger mt-3">{{ currentHotel.name }}</h1>
+    <h1 class="text-center text-info">{{ currentHotel.description }}</h1>
+    <Carousel />
 
     <h5>Kişi Sayısı</h5>
     <select
@@ -31,9 +32,12 @@
 
 <script>
 import data from "../database/data.json";
-
+import Carousel from "@/components/Carousel";
 export default {
   name: "Hotel",
+  components:{
+    Carousel
+  },
   data() {
     return {
       data: data.hotels,
@@ -45,6 +49,7 @@ export default {
 
   created() {
     this.currentHotel = data.hotels.find((i) => i.id == this.$route.params.id);
+    
   },
 
   methods: {

@@ -12,6 +12,7 @@
             placeholder="XXXXXXXXXXX"
             v-model="v$.user.tcNumber.$model"
             :class="{ 'is-invalid': v$.user.tcNumber.$error }"
+            :ref="'tcInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -33,14 +34,15 @@
             placeholder="5XXXXXXXXX"
             v-model="v$.user.phoneNumber.$model"
             :class="{ 'is-invalid': v$.user.phoneNumber.$error }"
+           :ref="'phoneInput'+index"
           />
           <small
             class="text-center text-danger"
             v-if="
               v$.user.phoneNumber.required.$invalid &&
               v$.user.phoneNumber.$error &&
-              clicked
-            "
+              clicked "
+            
             >Boş olamaz ve 10 karakter içerir</small
           >
         </div>
@@ -55,6 +57,7 @@
             id="input4"
             v-model="v$.user.name.$model"
             :class="{ 'is-invalid': v$.user.name.$error }"
+            :ref="'nameInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -72,6 +75,7 @@
             id="input5"
             v-model="v$.user.surname.$model"
             :class="{ 'is-invalid': v$.user.surname.$error }"
+            :ref="'surNameInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -97,6 +101,7 @@
             placeholder="X9X9-9999-99"
             v-model="v$.user.hesCode.$model"
             :class="{ 'is-invalid': v$.user.hesCode.$error }"
+            :ref="'hesCodeInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -117,6 +122,7 @@
             id="input6"
             v-model="v$.user.email.$model"
             :class="{ 'is-invalid': v$.user.email.$error }"
+            :ref="'emailInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -140,6 +146,7 @@
               id="gridRadios1"
               value="Erkek"
               v-model="user.gender"
+
             />
             <label class="form-check-label" for="gridRadios1"> Erkek </label>
           </div>
@@ -171,6 +178,7 @@
             id="input7"
             v-model="v$.user.age.$model"
             :class="{ 'is-invalid': v$.user.age.$error }"
+            :ref="'ageInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -188,6 +196,7 @@
             id="input8"
             v-model="v$.user.numberOfDays.$model"
             :class="{ 'is-invalid': v$.user.numberOfDays.$error }"
+            :ref="'daysInput'+index"
           />
           <small
             class="text-center text-danger"
@@ -203,9 +212,10 @@
 
       <hr class="text-primary" />
       <div class="mt-3 d-grid gap-2 mb-2">
-        <button @click="submitForm" type="submit" class="btn btn-primary">
+        <button @click="submitForm" type="submit" class="btn btn-primary" :ref="'btn'+index">
           Sign in
         </button>
+        <h1>{{index}}</h1>
       </div>
     </div>
   </form>
@@ -219,7 +229,9 @@ import { helpers } from "@vuelidate/validators";
 
 export default {
   mixins: [exampleMixin],
+  props: ["index"],
 
+  
   data() {
     return {
       v$: useVuelidate(),
@@ -254,24 +266,33 @@ export default {
     };
   },
 
+  // /^[A-Z0-9]{4}-[A-Z0-9]{4}-[0-9]{2}$/
+
   methods: {
     submitForm() {
+      
       this.v$.$validate();
       if (!this.v$.$error) {
         alert("successfull");
       } else {
         alert("Form failed validation");
       }
+      //  this.$refs[`tcInput${this.index+1}`].focus()
+       
+      
     },
+    
     afterSubmit() {
       this.clicked = true;
+     
     },
   },
+
+  
 };
 </script>
 
 <style scoped>
-
 .formDesign {
   background-color: #42b983;
 }
