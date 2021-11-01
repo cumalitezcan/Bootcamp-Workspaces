@@ -1,9 +1,11 @@
 <template>
   <Header />
   <div class="container">
-    <div class="alert alert-info mt-3" role="alert"><h4 class="text-center fw-bolder">Rezervasyon Oluştur</h4></div>
+    <div class="alert alert-info mt-3" role="alert">
+      <h4 class="text-center fw-bolder">Rezervasyon Oluştur</h4>
+    </div>
     <div class="d-flex align-items-stretch flex-wrap mt-3">
-      <Form v-for="index in pCount" :key="index" :hId="hId" />
+      <Form v-for="index in pCount" :key="index" :ref="'form'+index" :index="index" :hId="hId" />
     </div>
   </div>
 </template>
@@ -20,7 +22,7 @@ export default {
     return {
       hId: Number(this.$route.query.hId),
       pCount: Number(this.$route.query.pCount),
-      submitCount: 1,
+      submitted: 1,
     };
   },
 
