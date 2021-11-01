@@ -15,13 +15,12 @@
           <div class="col-md-8">
             <div class="d-flex flex-column align-items-center">
               
-             
             </div>
             <div class="d-flex flex-column align-items-center">
               <strong class="text-light font-monospace text-decoration-underline fs-5">1 Günlük</strong>
               <strong>{{ hotel.price }} ₺</strong>
-              <strong>{{ hotel.price  }} $</strong>
-              <strong>{{ hotel.price }} €</strong>
+              <strong> {{currentDolar(hotel.price)}} $</strong>
+              <strong> {{currentEuro(hotel.price) }} €</strong>
             </div>
           </div>
         </div>
@@ -32,14 +31,13 @@
               <strong><i class="fas fa-map-marker-alt me-1"></i>{{ hotel.location }}</strong>
             </div>
             <div>
-              <Carousel :star="hotel.star" />
+              <Star :star="hotel.star" />
             </div>
             <div>
                <router-link :to="`/hotel/${hotel.id}`">
               <button class="btn btn-dark">Seç</button>
             </router-link>
             </div>
-           
           </div>
         </div>
       </div>
@@ -49,17 +47,31 @@
 
 <script>
 import data from "../database/data.json";
-import Carousel from "@/components/Carousel"
+import Star from "@/components/Star"
 
 export default {
   components:{
-    Carousel
+    Star
   },
 
   data() {
     return {
       data: data.hotels,
     };
+  },
+
+  computed:{
+    currentDolar(){
+      return (value)=>{
+        return (value / 9.50).toFixed()
+      }
+    },
+   
+    currentEuro() {
+      return(value)=>{
+        return (value/ 11).toFixed()
+      }
+    }
   },
 };
 </script>

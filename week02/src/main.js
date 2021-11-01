@@ -14,7 +14,9 @@ import '@fortawesome/fontawesome-free/js/all.js'
 import hotelCard from "@/components/HotelCard";
 import header from "@/components/Header";
 import form from "@/components/Form";
-import carousel from "@/components/Carousel";
+import star from "@/components/Star";
+import hotelPictures from "@/components/HotelPictures";
+import date from "@/components/Date";
 
 const app = createApp(App);
 
@@ -24,6 +26,9 @@ app.use(router);
 app.component("HotelCard",hotelCard)
 app.component("Header",header)
 app.component("Form",form)
-app.component("Carousel",carousel)
+app.component("Star",star)
+app.component("HotelPictures",hotelPictures)
+app.component("Date",date)
+
 
 app.mount("#app");

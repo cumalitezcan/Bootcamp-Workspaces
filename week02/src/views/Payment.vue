@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import HotelCard from "@/components/Carousel";
+import HotelCard from "@/components/HotelCard";
 export default {
   components: {
     HotelCard
