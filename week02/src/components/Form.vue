@@ -1,7 +1,6 @@
 <template>
-  <form class="col-md-4 p-1 formDesign" @submit.prevent="afterSubmit">
-    <div class="border">
-      <h3 class="text-center text-decoration-underline">X Hoteli</h3>
+  <form class="col-md-3 ms-auto me-auto p-1 home-body" @submit.prevent="afterSubmit">
+      <h2 class="text-center text-decoration-underline">{{getHotelName(hId).name}}</h2>
       <div class="row mt-2">
         <div class="col-md-6">
           <label for="input1" class="form-label">T.C. No</label>
@@ -12,7 +11,7 @@
             placeholder="XXXXXXXXXXX"
             v-model="v$.user.tcNumber.$model"
             :class="{ 'is-invalid': v$.user.tcNumber.$error }"
-            :ref="'tcInput'+index"
+            :ref="'tcInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -24,7 +23,6 @@
             >Boş olamaz ve 11 karakter içerir</small
           >
         </div>
-
         <div class="col-md-6">
           <label for="input2" class="form-label">Cep Telefon No</label>
           <input
@@ -34,15 +32,15 @@
             placeholder="5XXXXXXXXX"
             v-model="v$.user.phoneNumber.$model"
             :class="{ 'is-invalid': v$.user.phoneNumber.$error }"
-           :ref="'phoneInput'+index"
+            :ref="'phoneInput' + index"
           />
           <small
             class="text-center text-danger"
             v-if="
               v$.user.phoneNumber.required.$invalid &&
               v$.user.phoneNumber.$error &&
-              clicked "
-            
+              clicked
+            "
             >Boş olamaz ve 10 karakter içerir</small
           >
         </div>
@@ -57,7 +55,7 @@
             id="input4"
             v-model="v$.user.name.$model"
             :class="{ 'is-invalid': v$.user.name.$error }"
-            :ref="'nameInput'+index"
+            :ref="'nameInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -75,7 +73,7 @@
             id="input5"
             v-model="v$.user.surname.$model"
             :class="{ 'is-invalid': v$.user.surname.$error }"
-            :ref="'surNameInput'+index"
+            :ref="'surNameInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -101,7 +99,7 @@
             placeholder="X9X9-9999-99"
             v-model="v$.user.hesCode.$model"
             :class="{ 'is-invalid': v$.user.hesCode.$error }"
-            :ref="'hesCodeInput'+index"
+            :ref="'hesCodeInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -122,7 +120,7 @@
             id="input6"
             v-model="v$.user.email.$model"
             :class="{ 'is-invalid': v$.user.email.$error }"
-            :ref="'emailInput'+index"
+            :ref="'emailInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -146,7 +144,6 @@
               id="gridRadios1"
               value="Erkek"
               v-model="user.gender"
-
             />
             <label class="form-check-label" for="gridRadios1"> Erkek </label>
           </div>
@@ -178,7 +175,7 @@
             id="input7"
             v-model="v$.user.age.$model"
             :class="{ 'is-invalid': v$.user.age.$error }"
-            :ref="'ageInput'+index"
+            :ref="'ageInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -196,7 +193,7 @@
             id="input8"
             v-model="v$.user.numberOfDays.$model"
             :class="{ 'is-invalid': v$.user.numberOfDays.$error }"
-            :ref="'daysInput'+index"
+            :ref="'daysInput' + index"
           />
           <small
             class="text-center text-danger"
@@ -212,12 +209,16 @@
 
       <hr class="text-primary" />
       <div class="mt-3 d-grid gap-2 mb-2">
-        <button @click="submitForm" type="submit" class="btn btn-primary" :ref="'btn'+index">
+        <button
+          @click="submitForm"
+          type="submit"
+          class="btn btn-success button-body"
+          :ref="'btn' + index"
+        >
           Sign in
         </button>
-        <h1>{{index}}</h1>
       </div>
-    </div>
+   
   </form>
 </template>
 
@@ -226,12 +227,14 @@ import exampleMixin from "@/mixins/FormValidation";
 import useVuelidate from "@vuelidate/core";
 import { required, minValue, minLength, email } from "@vuelidate/validators";
 import { helpers } from "@vuelidate/validators";
+import data from "@/database/data.json"
 
 export default {
   mixins: [exampleMixin],
-  props: ["index"],
+  props: ['index','hId'],
 
   
+
   data() {
     return {
       v$: useVuelidate(),
@@ -247,6 +250,7 @@ export default {
         numberOfDays: "",
       },
       clicked: false,
+      
     };
   },
 
@@ -270,7 +274,6 @@ export default {
 
   methods: {
     submitForm() {
-      
       this.v$.$validate();
       if (!this.v$.$error) {
         alert("successfull");
@@ -278,22 +281,42 @@ export default {
         alert("Form failed validation");
       }
       //  this.$refs[`tcInput${this.index+1}`].focus()
-       
-      
     },
-    
+
     afterSubmit() {
       this.clicked = true;
-     
     },
   },
 
-  
+  computed:{
+    getHotelName(){
+      return (hId) => {
+        return data.hotels.find(i=>i.id == hId)
+      }
+      
+    }
+  },
+
+  mounted(){
+    this.getHotelName(1)
+  }
 };
 </script>
 
 <style scoped>
-.formDesign {
-  background-color: #42b983;
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
+.home-body {
+  background: linear-gradient(45deg, greenyellow, dodgerblue);
+  font-family: "Sansita Swashed", cursive;
+   border-radius: 8px;
+}
+
+.button-body [type="button"] {
+  width: 50%;
+  background: dodgerblue;
+}
+
+.button-body:hover [type="button"] {
+  background: linear-gradient(45deg, greenyellow, dodgerblue);
 }
 </style>

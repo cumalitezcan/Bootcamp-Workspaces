@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div v-for="index in currentHotel.imageDetails" :key="index" class="column">
+    <div v-for="index in currentHotel.imageDetails" :key="index"  class="column">
       <img :src="index" alt="Snow" style="width: 100%" />
     </div>
   </div>
@@ -11,6 +11,12 @@
 export default {
   props: ["currentHotel"],
  
+  
+
+mounted() {
+  console.log(this.currentHotel.id)
+},
+
 };
 </script>
 
