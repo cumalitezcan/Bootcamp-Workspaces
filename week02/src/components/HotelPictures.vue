@@ -10,14 +10,8 @@
 
 export default {
   props: ["currentHotel"],
- 
-  
-
-mounted() {
-  console.log(this.currentHotel.id)
-},
-
 };
+
 </script>
 
 <style scoped>

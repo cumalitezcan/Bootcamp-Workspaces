@@ -235,24 +235,6 @@ export default {
   mixins: [FormValidation],
   props: ["index", "hId"],
 
-  //  data() {
-  //   return {
-  //     v$: useVuelidate(),
-  //     user: {
-  //       tcNumber: "",
-  //       phoneNumber: "",
-  //       name: "",
-  //       surname: "",
-  //       hesCode: "",
-  //       email: "",
-  //       age: "",
-  //       gender: "",
-  //       numberOfDays: "",
-  //     },
-  //     clicked: false,
-  //   };
-  // },
-
   validations() {
     return {
       user: {
@@ -273,10 +255,10 @@ export default {
   },
 
   methods: {
-    submitForm() {
+   submitForm() {
       this.v$.$validate();
-      if (this.v$.$error) {
-        if (!this.index == 1) {
+      if (!this.v$.$error) {
+        if (this.index == 1) {
           let user = new Object({
             name: this.$refs[`nameInput${this.index}`].value,
             surname: this.$refs[`surNameInput${this.index}`].value,
@@ -292,24 +274,20 @@ export default {
           this.$refs[`btn${this.index}`].disabled = true;
           this.$emit("completeForm", !this.completed);
         }
-
         this.$refs[`btn${this.index}`].disabled = true;
         this.$parent.$refs[`form${this.index + 1}`].$refs[
           `tcInput${this.index + 1}`
         ].focus();
       } else {
-        alert("Form failed validation");
         this.$parent.$refs[`form${this.index}`].$refs[
           `tcInput${this.index}`
         ].focus();
       }
     },
-
     afterSubmit() {
       this.clicked = true;
     },
   },
-
   computed: {
     getHotelName() {
       return (hId) => {

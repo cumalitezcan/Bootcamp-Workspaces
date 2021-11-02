@@ -7,6 +7,7 @@
     <div v-else class="alert alert-info mt-3" role="alert">
       <h4 class="text-center fw-bolder">Rezervasyon Oluştur</h4>
     </div>
+    <h5>{{counter}}</h5>
     
 
     <div class="d-flex align-items-stretch flex-wrap mt-3">
@@ -18,6 +19,7 @@
         :hId="hId"
         @completeForm="completeForm"
         @buyUser="buyUser"
+        
       />
     </div>
   </div>
@@ -28,7 +30,6 @@ import Form from "@/components/Form";
 import PayModel from "@/components/PayModel";
 export default {
   name: "Reservation",
-
   components: {
     Form,
     PayModel
@@ -47,7 +48,8 @@ export default {
         email: null,
         count: null,
       },
-      completed : false
+      completed : false,
+      
       
     };
   },
@@ -61,7 +63,8 @@ export default {
     },
     completeForm(value){
       this.completed = value;
-    }
+    },
+    
   },
 };
 </script>

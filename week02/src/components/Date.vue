@@ -6,7 +6,6 @@
 
 <script>
 export default {
- 
   computed: {
     getDate() {
     const d = new Date().toString().split(' ').slice(1,4).join(' ')

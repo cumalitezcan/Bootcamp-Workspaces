@@ -5,8 +5,6 @@
       <HotelCard />
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -19,6 +17,5 @@ export default {
     HotelCard,
     Header,
   },
-  
 };
 </script>
