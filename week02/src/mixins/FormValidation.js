@@ -22,6 +22,9 @@ export const FormValidation = {
         numberOfDays: "",
       },
       clicked: false,
+      completed: false,
+     
+     
     };
   },
     

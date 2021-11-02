@@ -16,11 +16,7 @@ import {createRouter,createWebHistory} from "vue-router";
         path:"/reservation",
         component:()=>import("@/views/Reservation")
     },
-    {
-        name:"PaymentPage",
-        path:"/payment",
-        component:()=>import("@/views/Payment")
-    },
+   
 ]
 
 const router = createRouter({

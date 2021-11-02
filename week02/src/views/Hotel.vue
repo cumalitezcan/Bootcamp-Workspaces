@@ -48,10 +48,7 @@
       </router-link>
         </div>
       </div>
-
-      
     </div>
-    <!-- <button @click="submit()" class="btn btn-primary">Rezervasyon Yap</button> -->
   </div>
 </template>
 

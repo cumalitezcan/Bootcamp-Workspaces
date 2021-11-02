@@ -3,7 +3,6 @@ import App from "./App.vue";
 import router from './router'
 // import Vuelidate from 'vuelidate';
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
@@ -16,6 +15,7 @@ import form from "@/components/Form";
 import star from "@/components/Star";
 import hotelPictures from "@/components/HotelPictures";
 import date from "@/components/Date";
+import paymodel from "@/components/PayModel";
 
 
 
@@ -30,5 +30,6 @@ app.component("Form",form)
 app.component("Star",star)
 app.component("HotelPictures",hotelPictures)
 app.component("Date",date)
+app.component("PayModel",paymodel)
 
 app.mount("#app");

@@ -224,12 +224,10 @@
 </template>
 
 <script>
-import {FormValidation} from "@/mixins/FormValidation";
+import { FormValidation } from "@/mixins/FormValidation";
 
 import { required, minValue, minLength, email } from "@vuelidate/validators";
 import { helpers } from "@vuelidate/validators";
-
-
 
 import data from "@/database/data.json";
 
@@ -275,33 +273,36 @@ export default {
   },
 
   methods: {
-    
     submitForm() {
-     
-       if(this.index ==  this.$parent.pCount){
-          alert('buton aktif')
-        } else {
-            alert('buton pasif')
-             this.$parent.$refs[`form${this.index+1}`].$refs[`tcInput${this.index+1}`].focus();
+      this.v$.$validate();
+      if (this.v$.$error) {
+        if (!this.index == 1) {
+          let user = new Object({
+            name: this.$refs[`nameInput${this.index}`].value,
+            surname: this.$refs[`surNameInput${this.index}`].value,
+            phone: this.$refs[`phoneInput${this.index}`].value,
+            email: this.$refs[`emailInput${this.index}`].value,
+            count: this.$refs[`daysInput${this.index}`].value,
+          });
+          
+          this.$emit("buyUser", user);
+          this.$refs[`btn${this.index}`].disabled = true;
+        }
+        if (this.index == this.$parent.pCount) {
+          this.$refs[`btn${this.index}`].disabled = true;
+          this.$emit("completeForm", !this.completed);
         }
 
-      this.v$.$validate();
-
-      if (!this.v$.$error) {
         this.$refs[`btn${this.index}`].disabled = true;
-
-        alert("successfull");
+        this.$parent.$refs[`form${this.index + 1}`].$refs[
+          `tcInput${this.index + 1}`
+        ].focus();
       } else {
         alert("Form failed validation");
-        this.$refs[`btn${this.index}`].disabled = true;
-       
-        // this.$refs[`tcInput${this.index}`].focus();
-        
-
+        this.$parent.$refs[`form${this.index}`].$refs[
+          `tcInput${this.index}`
+        ].focus();
       }
-      // this.$refs[`tcInput${index}`].focus()
-      //
-      //disable submit button on submitted form
     },
 
     afterSubmit() {
@@ -316,11 +317,6 @@ export default {
       };
     },
   },
-
-  // mounted(){
-  //   console.log(`tcInput${this.index}`)
-  //   this.$refs[`tcInput${this.index}`].focus()
-  // }
 };
 </script>
 
