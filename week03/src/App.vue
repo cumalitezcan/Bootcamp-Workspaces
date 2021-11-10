@@ -1,7 +1,19 @@
 <template>
-<div>
-  <h1>Header</h1>
+<div class="container">
+  <Navbar />
   <hr>
   <router-view></router-view>
   </div>
 </template>
+
+<script>
+import Navbar from "./components/Navbar.vue"
+
+export default {
+  name:"App",
+  components: {
+    Navbar,
+    
+  }
+}
+</script>
