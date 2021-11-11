@@ -4,9 +4,9 @@
   rounded
   solo-inverted
 ></v-autocomplete> -->
+<!-- <v-app>
   <v-autocomplete
     v-model="searchValue"
-    :items="items"
     solo
     dense
     rounded
@@ -14,6 +14,17 @@
     label="Şirket adı giriniz"
     @keydown.enter="goSend"
   ></v-autocomplete>
+</v-app> -->
+
+
+   <input
+          type="text"
+          v-model="searchValue"
+          placeholder="Değer Giriniz"
+          class="text-center border"
+          @keydown.enter="goSend"
+       
+ >
 </template>
 
  <!-- <input
@@ -29,17 +40,20 @@ export default {
   data() {
     return {
       searchValue: "",
-       items: ['foo', 'bar', 'fizz', 'buzz']
     };
   },
+  
+
   methods: {
     goSend() {
       console.log(this.searchValue)
        this.$router.push({
-        name: "Search",
+        name: "Result",
         params: { symbol: this.searchValue },
+        
       });
     },
   },
-}
+  computed: {},
+};
 </script>
