@@ -6,21 +6,25 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    searchCompany: null,
-    searchSymbol: null,
+    search: null,
+    companyAndSymbolValues: []
+    
   },
   mutations: {
+    SET_SEARCH_RESULT(state, payload) {
+      state.search = payload;
+    },
     SET_COMPANY_SEARCH_RESULT(state, payload) {
-      state.searchCompany = payload;
+      state.companyAndSymbolValues = payload;
     },
   },
   actions: {
-    searchFromCompanyName({ state, commit }, payload) {
+    searchFromValue({ state, commit }) {
       const options = {
         method: "GET",
         url: "https://alpha-vantage.p.rapidapi.com/query",
         params: {
-          keywords: `${state.searchCompany}`,
+          keywords: `${state.search}`,
           function: "SYMBOL_SEARCH",
           datatype: "json",
         },
@@ -33,13 +37,31 @@ export default new Vuex.Store({
       axios
         .request(options)
         .then((res) => {
-          console.log(res.data);
-          commit("SET_COMPANY_SEARCH_RESULT", res.data);
+          let obj = res.data.bestMatches
+          console.log("geldi1")
+           console.log(obj)
+          commit("SET_COMPANY_SEARCH_RESULT",obj);
         })
         .catch((err) => {
+          console.log("gelmedi2")
           console.log(err);
         });
     },
+  },
+  getters:{
+    companyNameAndSymbol: (state) => {
+      console.log("getters")
+      return state.companyAndSymbolValues.map((company)=>{
+        console.log(company)
+        return {
+          symbol: company["1. symbol"],
+          name:company["2. name"],
+        };
+      }
+      )
+      console.log(state.companyAndSymbolValues)
+      // return JSON.parse(state.searchResults)
+    }
   },
   modules: {},
 });

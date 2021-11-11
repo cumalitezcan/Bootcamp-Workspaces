@@ -3,6 +3,7 @@
     <div class="row text-end m-2">
       <div class="col-md-2">Home</div>
       <div class="col-md-4">
+        <!-- <SearchInput /> -->
         <input
           type="text"
           v-model="searchValue"
@@ -18,8 +19,9 @@
 </template>
 
 <script>
-import Input from "./Input.vue";
+
 import Role from "./Role.vue";
+// import SearchInput from "./SearchInput.vue";
 export default {
   data() {
     return {
@@ -28,7 +30,8 @@ export default {
   },
   components: {
     Role,
-    Input,
+    // SearchInput
+    
   },
 
   methods: {
