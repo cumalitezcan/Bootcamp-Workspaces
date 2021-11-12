@@ -17,6 +17,7 @@ export default new Vuex.Store({
     weeklyValues: [],
     monthlyValues: [],
   },
+  
   mutations: {
     SET_SEARCH_RESULT(state, payload) {
       state.search = payload;
@@ -34,6 +35,7 @@ export default new Vuex.Store({
       state.monthlyValues = payload;
     },
   },
+
   actions: {
     searchFromValue({ state, commit }) {
       return axios
