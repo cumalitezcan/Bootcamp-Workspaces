@@ -17,7 +17,7 @@ export default new Vuex.Store({
     weeklyValues: [],
     monthlyValues: [],
   },
-  
+
   mutations: {
     SET_SEARCH_RESULT(state, payload) {
       state.search = payload;
@@ -108,6 +108,31 @@ export default new Vuex.Store({
       });
       // return JSON.parse(state.searchResults)
     },
+
+
+    //33 keys for each time zone
+    getDailyResultsKeys(state){
+      return Object.keys(state.dailyValues).slice(0,33);
+    },
+    getWeeklyResultsKeys(state){
+      return Object.keys(state.weeklyValues).slice(0,33);
+    },
+    getMonthlyResultsKeys(state){
+      return Object.keys(state.monthlyValues).slice(0,33);
+    },
+
+
+     //33 values for each time zone
+     getDailyResultsValues(state){
+      return Object.values(state.dailyValues).slice(0,33);
+    },
+     getWeeklyResultsValues(state){
+      return Object.values(state.weeklyValues).slice(0,33);
+    },
+     getMonthlyResultsValues(state){
+      return Object.values(state.monthlyValues).slice(0,33);
+    },
+
 
   },
   modules: {},
