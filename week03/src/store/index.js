@@ -6,12 +6,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    apiURL: "https://alpha-vantage.p.rapidapi.com/query",
+    headers: {
+      "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+      "x-rapidapi-key": "83b6a8d056msh586464f5c969161p114268jsnd0bb370711c6",
+    },
     search: null,
     companyAndSymbolValues: [],
     dailyValues: [],
     weeklyValues: [],
     monthlyValues: [],
-    
   },
   mutations: {
     SET_SEARCH_RESULT(state, payload) {
@@ -26,82 +30,83 @@ export default new Vuex.Store({
     SET_WEEKLY_RESULTS(state, payload) {
       state.weeklyValues = payload;
     },
-    SET_MONTLY_RESULTS(state, payload) {
+    SET_MONTHLY_RESULTS(state, payload) {
       state.monthlyValues = payload;
     },
-
   },
   actions: {
     searchFromValue({ state, commit }) {
-      const options = {
-        method: "GET",
-        url: "https://alpha-vantage.p.rapidapi.com/query",
-        params: {
-          keywords: `${state.search}`,
-          function: "SYMBOL_SEARCH",
-          datatype: "json",
-        },
-        headers: {
-          "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-          "x-rapidapi-key":
-            "83b6a8d056msh586464f5c969161p114268jsnd0bb370711c6",
-        },
-      };
-      axios
-        .request(options)
+      return axios
+        .get(`${state.apiURL}`, {
+          headers: { ...state.headers },
+          params: { keywords: `${state.search}`, function: "SYMBOL_SEARCH" },
+        })
         .then((res) => {
-          let obj = res.data.bestMatches
-          commit("SET_COMPANY_SEARCH_RESULT",obj);
+          commit("SET_COMPANY_SEARCH_RESULT", res.data.bestMatches);
         })
         .catch((err) => {
           console.log(err);
         });
-    
-  },
+    },
 
-  dailyValues({ state, commit },payload){
-    
-    const options = {
-      method: 'GET',
-      url: 'https://alpha-vantage.p.rapidapi.com/query',
-      params: {
-        function: 'TIME_SERIES_DAILY',
-        symbol: payload,
-        outputsize: 'compact',
-        datatype: 'json'
-      },
-      headers: {
-        'x-rapidapi-host': 'alpha-vantage.p.rapidapi.com',
-        'x-rapidapi-key': '83b6a8d056msh586464f5c969161p114268jsnd0bb370711c6'
-      },
-    };
-    axios
-    .request(options)
-    .then((res) => {
-      console.log(res.data["Time Series (Daily)"])
-    let obj = res.data["Time Series (Daily)"]
-    commit("SET_DAILY_RESULTS",obj);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-},
-
+    dailyValues({ state, commit }, payload) {
+      console.log("daily")
+      axios
+        .get(`${state.apiURL}`, {
+          headers: { ...state.headers },
+          params: { symbol: payload, function: "TIME_SERIES_DAILY",outputsize: 'compact',},
+        })
+        .then((res) => {
+          console.log(res.data["Time Series (Daily)"])
+          commit("SET_DAILY_RESULTS", res.data["Time Series (Daily)"]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    weeklyValues({ state, commit }, payload) {
+      axios
+        .get(`${state.apiURL}`, {
+          headers: { ...state.headers },
+          params: { symbol: payload, function: "TIME_SERIES_WEEKLY" },
+        })
+        .then((res) => {
+          console.log(res.data["Weekly Time Series"]);
+          commit("SET_WEEKLY_RESULTS", res.data["Weekly Time Series"]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    monthlyValues({ state, commit }, payload) {
+      axios
+        .get(`${state.apiURL}`, {
+          headers: { ...state.headers },
+          params: { symbol: payload, function: "TIME_SERIES_MONTHLY" },
+        })
+        .then((res) => {
+          console.log("geldi montly");
+          console.log(res.data["Monthly Time Series"]);
+          commit("SET_MONTHLY_RESULTS", res.data["Monthly Time Series"]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
-  getters:{
+  getters: {
     companyNameAndSymbol: (state) => {
-      console.log("getters")
-      return state.companyAndSymbolValues.map((company)=>{
-        console.log(company)
+      console.log("getters");
+      return state.companyAndSymbolValues.map((company) => {
+        console.log(company);
         return {
           symbol: company["1. symbol"],
-          name:company["2. name"],
+          name: company["2. name"],
         };
-      }
-      )
-      console.log(state.companyAndSymbolValues)
+      });
       // return JSON.parse(state.searchResults)
-    }
+    },
+
   },
   modules: {},
 });
