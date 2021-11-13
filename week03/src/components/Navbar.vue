@@ -8,7 +8,7 @@
         </div>
 
       <div class="col-md-4">
-        <SearchInput />
+       <h2>Old Input</h2>
       </div>
       <div class="col-md-2">Role</div>
       <div class="col-md-3">Logs</div>

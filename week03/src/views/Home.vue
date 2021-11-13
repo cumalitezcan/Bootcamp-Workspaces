@@ -1,20 +1,18 @@
 <template>
 <div>
-  <h1>Home</h1>
+  <SearchInput />
   <hr>
-  
-
 </div>
-  
-  
 </template>
 
+
 <script>
-
-
-
+import SearchInput from "@/components/SearchInput"
 export default {
-  name:"Home",     
+  name:"Home",
+  components:{
+    SearchInput
+  } 
    
 }
 </script>

@@ -10,16 +10,13 @@ const routes = [
     name: "Home",
     component:()=>import("../views/Home.vue")
   },
+  
   {
-    path: `/symbol/`,
-    name: "Result",
-    component:()=>import("../views/Result.vue")
-  },
-  {
-    path: `/symbol/:symbol`,
+    path: `/symbol/:symbol/:moment`,
     name: "Search",
     component:()=>import("../views/Search.vue")
   },
+
   
 ];
 

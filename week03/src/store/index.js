@@ -51,22 +51,23 @@ export default new Vuex.Store({
         });
     },
 
-    dailyValues({ state, commit }, payload) {
-      console.log("daily")
+    getDailyValues({ state, commit }, payload) {
       axios
         .get(`${state.apiURL}`, {
           headers: { ...state.headers },
-          params: { symbol: payload, function: "TIME_SERIES_DAILY",outputsize: 'compact',},
+          params: { symbol: payload, function: "TIME_SERIES_DAILY",outputsize: 'compact'},
         })
         .then((res) => {
+          console.log("getdaily başarılı")
           console.log(res.data["Time Series (Daily)"])
           commit("SET_DAILY_RESULTS", res.data["Time Series (Daily)"]);
         })
         .catch((err) => {
+          console.log("get daily başarısız")
           console.log(err);
         });
     },
-    weeklyValues({ state, commit }, payload) {
+    getWeeklyValues({ state, commit }, payload) {
       axios
         .get(`${state.apiURL}`, {
           headers: { ...state.headers },
@@ -80,7 +81,7 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    monthlyValues({ state, commit }, payload) {
+    getMonthlyValues({ state, commit }, payload) {
       axios
         .get(`${state.apiURL}`, {
           headers: { ...state.headers },
@@ -98,9 +99,7 @@ export default new Vuex.Store({
   },
   getters: {
     companyNameAndSymbol: (state) => {
-      console.log("getters");
       return state.companyAndSymbolValues.map((company) => {
-        console.log(company);
         return {
           symbol: company["1. symbol"],
           name: company["2. name"],
