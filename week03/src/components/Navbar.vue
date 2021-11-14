@@ -1,27 +1,25 @@
 <template>
-  <div class="container">
-    <div class="row text-end m-2">
-      <div class="col-md-2">
+  <v-container>
+    <v-row>
+      <v-app-bar dense shaped dark>
         <router-link :to="{ name: 'Home' }">
-        <button class="btn btn-success">Home</button>
+         <button class="btn btn-outline-light rounded-pill">Home</button>
         </router-link>
-        </div>
-
-      <div class="col-md-4">
-       <Role />
-      </div>
-      <!-- <div class="col-md-2"><Role /></div> -->
-      <div class="col-md-3">Logs</div>
-    </div>
-  </div>
+        <v-spacer></v-spacer>
+        <!-- <v-icon class="me-5">mdi-account-tie</v-icon> -->
+        <Role />
+        
+      </v-app-bar>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 import Role from "./Role.vue";
 export default {
-  name:"Navbar",
-  components:{
+  name: "Navbar",
+  components: {
     Role,
-  }
+  },
 };
 </script>

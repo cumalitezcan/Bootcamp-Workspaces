@@ -1,30 +1,22 @@
 <template>
-  <!-- <v-app>
-    <v-switch
-      v-model="switch1"
-      inset
-      :label="switch1?roles[0]:roles[1]"
-    ></v-switch>
-  </v-app> -->
-
-  <v-container>
-   
-      <div>
-        <select name="user" id="user" class="user-select" v-model="selected">
-          <option value="guest">Guest</option>
-          <option value="admin">Admin</option>
+    <div class="d-flex align-items-center">
+      <div class="me-2">
+        <select class="user-select text-light" v-model="selected">
+          <option class="text-dark font-monospace" value="guest">Guest</option>
+          <option class="text-dark font-monospace" value="admin">Admin</option>
         </select>
       </div>
-      <button v-if="selected=='admin'" @click="AdminPage" class="btn btn-success"></button>
-   
-  </v-container>
+      <div>
+        <button @click="AdminPage"><v-icon class="me-5">mdi-account-tie</v-icon></button>
+      </div>
+    </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      selected:'guest',
+      selected: "guest",
     };
   },
   methods: {
@@ -38,6 +30,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
