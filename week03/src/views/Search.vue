@@ -3,9 +3,15 @@
     <v-container>
       <v-row class="d-flex justify-content-center flex-column page-container">
         <v-col>
-          <h1 class="text-center">This is an Search page</h1>
-          <div class="d-flex flex-row justify-content-around">
+          <div class="alert alert-primary text-center" role="alert">
+            Data is ready
+            <br>
+            You must press the buttons in order to see the chart.
+          </div>
+          <h1 class="text-center">
             
+          </h1>
+          <div class="d-flex flex-row justify-content-around">
             <button
               class="btn btn-warning"
               :class="buttonActive == 0 ? 'active' : ''"
@@ -32,7 +38,6 @@
         <v-col class="d-flex justify-content-center">
           <div id="candleChart " ref="candle"></div>
         </v-col>
-        
       </v-row>
     </v-container>
   </v-app>
@@ -51,25 +56,28 @@ export default {
       dates: [],
       result: [],
       moment: [],
+      symbol: this.$route.params.symbol,
+      defaultMoment: "daily",
     };
   },
 
-    mounted(){
-      console.log("created'a girdi")
-      console.log(this.$route.params)
-       if(this.$route.params.symbol){
-       this.getDailyValues(this.$route.params.symbol).then(()=>{
-         this.dates = this.getDailyResultsKeys;
-         this.result = this.getDailyResultsValues;
-          this.moment = this.dailyValues;
-          this.designChart();
-      });
+  mounted() {
+    if (this.$route.params.symbol) {
+      console.log(this.$route.params.symbol);
+
+      this.getDailyValues(this.$route.params.symbol);
+      console.log(this.getDailyResultsKeys);
+
+      this.dates = this.getDailyResultsKeys;
+
+      this.result = this.getDailyResultsValues;
+      this.moment = this.dailyValues;
+      this.designChart();
+      // });
     }
   },
 
-
   computed: {
-    ...mapState(["dailyValues", "weeklyValues", "monthlyValues"]),
     ...mapGetters([
       "getDailyResultsKeys",
       "getWeeklyResultsKeys",
@@ -78,37 +86,33 @@ export default {
       "getWeeklyResultsValues",
       "getMonthlyResultsValues",
     ]),
+    ...mapState(["dailyValues", "weeklyValues", "monthlyValues"]),
   },
 
   methods: {
     ...mapActions(["getDailyValues", "getWeeklyValues", "getMonthlyValues"]),
-     setStock(val, moment) {
+    setStock(val, moment) {
       // Changes daily, weekly or monthly data
       this.buttonActive = val;
       let symbol = this.$route.params.symbol;
       if (val == 0) {
         //Daily
-        this.$router
-        //`/symbol/:symbol/:moment`
-          .push({ path: `/symbol/${symbol}/${moment}` })
-          .then(() => {
-            this.dates = this.getDailyResultsKeys;
-            this.result = this.getDailyResultsValues;
-            this.moment = this.dailyValues;
-            let area = this.$refs.candle;
-            console.log("this.result")
-            console.log(this.result)
-            area.innerHTML = "";
-             this.designChart();
-          });
+        this.$router.push({ path: `/symbol/${symbol}/${moment}` }).then(() => {
+          this.dates = this.getDailyResultsKeys;
+          this.result = this.getDailyResultsValues;
+          this.moment = this.dailyValues;
+          let area = this.$refs.candle;
+          area.innerHTML = "";
+          this.designChart();
+        });
       }
       if (val == 1) {
         //Weekly
         this.$router.push({ path: `/symbol/${symbol}/${moment}` });
         this.getWeeklyValues(this.$route.params.symbol).then(() => {
-            this.dates = this.getWeeklyResultsKeys;
-            this.result = this.getWeeklyResultsValues;
-            this.moment = this.weeklyValues;
+          this.dates = this.getWeeklyResultsKeys;
+          this.result = this.getWeeklyResultsValues;
+          this.moment = this.weeklyValues;
           let area = this.$refs.candle;
           area.innerHTML = "";
           this.designChart();
@@ -116,7 +120,6 @@ export default {
       }
       if (val == 2) {
         //Montly
-        //error
         this.$router.push({ path: `/symbol/${symbol}/${moment}` });
         this.getMonthlyValues(this.$route.params.symbol).then(() => {
           this.dates = this.getMonthlyResultsKeys;
@@ -124,7 +127,7 @@ export default {
           this.moment = this.monthlyValues;
           let area = this.$refs.candle;
           area.innerHTML = "";
-           this.designChart();
+          this.designChart();
         });
       }
     },
@@ -247,6 +250,7 @@ export default {
         })
         .attr("transform", `translate(${margin.rigth},${height - 500})`)
         .attr("fill", "#601f79");
+
       container // Draws candle strippes
         .selectAll("candles")
         .data(list)
@@ -309,11 +313,11 @@ export default {
 </script>
 
 <style>
-  .page-container {
+.page-container {
   position: relative;
 }
 
-  #candleChart {
+#candleChart {
   padding: 5rem;
   border: 3px solid white;
   margin-top: 2rem;

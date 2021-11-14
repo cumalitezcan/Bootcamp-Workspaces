@@ -1,36 +1,41 @@
 <template>
   <div class="container">
     <div class="row">
-      <input
-        type="text"
+      <v-text-field
+        label="Enter company name or symbol"
         v-model="searchValue"
-        placeholder="Değer Giriniz"
-        class="text-center border"
+        :rules="rules"
+        hide-details="auto"
         @keydown.enter="goSend"
-      />
+      ></v-text-field>
     </div>
-    <hr>
-    <div v-if="clicked" class="row">
-      <div class="col-md-8">
+
+    <div v-if="clicked" class="row text-center mt-4">
+      <div class="offset-2 col-md-6">
         <select
           v-model="selectedItem"
           class="form-select"
           aria-label="Default select example"
         >
-          <option
+          <option 
             v-for="(company, index) in companyNameAndSymbol"
             :key="index"
             :value="company.symbol"
           >
-            Company Name: {{ company.name }} ||| Symbol Name :
-            {{ company.symbol }}
+            <pre>
+              <h2>Company Name: </h2>{{ company.name }}
+            </pre>
+            <pre>
+              Symbol Name  {{ company.symbol }}
+            </pre>
           </option>
         </select>
       </div>
       <div class="col-md-4">
-        <router-link :to="`/symbol/${selectedItem}/${defaultMoment}`">
+        <!-- <router-link :to="`/symbol/${selectedItem}/daily`">
           <button class="btn btn-success">Get to chart</button>
-        </router-link>
+        </router-link> -->
+         <button @click="goChart" class="btn btn-success">Get to chart</button>
       </div>
     </div>
   </div>
@@ -44,26 +49,33 @@ export default {
       searchValue: "",
       selectedItem: "",
       clicked: false,
-      defaultMoment: "daily"
+      rules: [
+        (searchValue) => !!searchValue || "Required.",
+        (searchValue) =>
+          (searchValue && searchValue.length >= 3) || "Min 3 characters",
+      ],
     };
   },
 
   methods: {
     ...mapMutations(["SET_SEARCH_RESULT"]),
     ...mapActions(["searchFromValue"]),
-      goSend() {
-      console.log(this.searchValue);
-      this.$store.commit("SET_SEARCH_RESULT", this.searchValue);
-      this.$store.dispatch("searchFromValue");
-      this.clicked = !this.clicked
+
+    goSend() {
+      this.searchFromValue(this.searchValue)
+      this.clicked = !this.clicked;
     },
+
+    goChart(){
+      console.log("geldi")
+       this.$router.push({ path:`/symbol/${this.selectedItem}/daily` })
+          
+    }
+  
   },
   computed: {
-    ...mapState(["companyAndSymbolValues"]),
+    ...mapState(["search"]),
     ...mapGetters(["companyNameAndSymbol"]),
   },
-
-
- 
 };
 </script>

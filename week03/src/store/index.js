@@ -11,8 +11,7 @@ export default new Vuex.Store({
       "x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
       "x-rapidapi-key": "83b6a8d056msh586464f5c969161p114268jsnd0bb370711c6",
     },
-    search: null,
-    companyAndSymbolValues: [],
+    search: [],
     dailyValues: [],
     weeklyValues: [],
     monthlyValues: [],
@@ -24,10 +23,8 @@ export default new Vuex.Store({
     SET_SEARCH_RESULT(state, payload) {
       state.search = payload;
     },
-    SET_COMPANY_SEARCH_RESULT(state, payload) {
-      state.companyAndSymbolValues = payload;
-    },
     SET_DAILY_RESULTS(state, payload) {
+      console.log(payload)
       state.dailyValues = payload;
     },
     SET_WEEKLY_RESULTS(state, payload) {
@@ -42,14 +39,15 @@ export default new Vuex.Store({
   },
 
   actions: {
-    searchFromValue({ state, commit }) {
+    searchFromValue({ state, commit },payload) {
       return axios
         .get(`${state.apiURL}`, {
           headers: { ...state.headers },
-          params: { keywords: `${state.search}`, function: "SYMBOL_SEARCH" },
+          params: { keywords: payload, function: "SYMBOL_SEARCH" },
         })
         .then((res) => {
-          commit("SET_COMPANY_SEARCH_RESULT", res.data.bestMatches);
+         
+          commit("SET_SEARCH_RESULT", res.data.bestMatches);
         })
         .catch((err) => {
           console.log(err);
@@ -57,13 +55,13 @@ export default new Vuex.Store({
     },
 
     getDailyValues({ state, commit }, payload) {
+      console.log(payload)
       axios
         .get(`${state.apiURL}`, {
           headers: { ...state.headers },
-          params: { symbol: payload, function: "TIME_SERIES_DAILY",outputsize: 'compact'},
+          params: { symbol: payload, function: "TIME_SERIES_DAILY"},
         })
         .then((res) => {
-          console.log("getdaily başarılı")
           console.log(res.data["Time Series (Daily)"])
           commit("SET_DAILY_RESULTS", res.data["Time Series (Daily)"]);
         })
@@ -92,7 +90,6 @@ export default new Vuex.Store({
           params: { symbol: payload, function: "TIME_SERIES_MONTHLY" },
         })
         .then((res) => {
-          console.log("geldi montly");
           console.log(res.data["Monthly Time Series"]);
           commit("SET_MONTHLY_RESULTS", res.data["Monthly Time Series"]);
         })
@@ -106,7 +103,7 @@ export default new Vuex.Store({
   },
   getters: {
     companyNameAndSymbol: (state) => {
-      return state.companyAndSymbolValues.map((company) => {
+      return state.search.map((company) => {
         return {
           symbol: company["1. symbol"],
           name: company["2. name"],
@@ -118,6 +115,7 @@ export default new Vuex.Store({
 
     //33 keys for each time zone
     getDailyResultsKeys(state){
+      console.log(state.dailyValues)
       return Object.keys(state.dailyValues).slice(0,33);
     },
     getWeeklyResultsKeys(state){
@@ -139,7 +137,7 @@ export default new Vuex.Store({
       return Object.values(state.monthlyValues).slice(0,33);
     },
 
-    
+
   },
   modules: {},
 });

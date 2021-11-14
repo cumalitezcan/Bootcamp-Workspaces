@@ -29,7 +29,6 @@ export default {
   },
   mounted(){
 
-      console.log(this.pathMoves)
       for (let index = 0; index < this.pathMoves.length; index++) {
         if (this.pathMoves[index]['to:'] == "/error") {
           this.items[1].children.push({
