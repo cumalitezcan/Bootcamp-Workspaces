@@ -8,22 +8,20 @@
         </div>
 
       <div class="col-md-4">
-       <h2>Old Input</h2>
+       <Role />
       </div>
-      <div class="col-md-2">Role</div>
+      <!-- <div class="col-md-2"><Role /></div> -->
       <div class="col-md-3">Logs</div>
     </div>
   </div>
 </template>
 
 <script>
-
-import SearchInput from "./SearchInput.vue";
+import Role from "./Role.vue";
 export default {
   name:"Navbar",
   components:{
-    SearchInput,
+    Role,
   }
-
 };
 </script>

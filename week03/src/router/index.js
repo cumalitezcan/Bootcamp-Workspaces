@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,7 +15,11 @@ const routes = [
     name: "Search",
     component:()=>import("../views/Search.vue")
   },
-
+  {
+    path:'/admin',
+    name:'Admin',
+    component: ()=> import('../views/Admin.vue')
+  },
   
 ];
 

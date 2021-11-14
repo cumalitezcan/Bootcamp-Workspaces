@@ -16,6 +16,8 @@ export default new Vuex.Store({
     dailyValues: [],
     weeklyValues: [],
     monthlyValues: [],
+    pathMoves:[]
+
   },
 
   mutations: {
@@ -34,6 +36,9 @@ export default new Vuex.Store({
     SET_MONTHLY_RESULTS(state, payload) {
       state.monthlyValues = payload;
     },
+    SET_PATH_MOVES(state,payload){
+      state.pathMoves.push(payload)
+    }
   },
 
   actions: {
@@ -63,7 +68,6 @@ export default new Vuex.Store({
           commit("SET_DAILY_RESULTS", res.data["Time Series (Daily)"]);
         })
         .catch((err) => {
-          console.log("get daily başarısız")
           console.log(err);
         });
     },
@@ -95,6 +99,9 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
+    },
+    getPathMoves({commit},payload){
+      return commit('SET_PATH_MOVES',payload)
     },
   },
   getters: {
@@ -132,7 +139,7 @@ export default new Vuex.Store({
       return Object.values(state.monthlyValues).slice(0,33);
     },
 
-
+    
   },
   modules: {},
 });

@@ -1,23 +1,27 @@
 <template>
   <v-app>
     <v-container>
-      <v-row>
+      <v-row class="d-flex justify-content-center flex-column page-container">
         <v-col>
-          <div>
-            <h1>This is an Search page</h1>
+          <h1 class="text-center">This is an Search page</h1>
+          <div class="d-flex flex-row justify-content-around">
+            
             <button
+              class="btn btn-warning"
               :class="buttonActive == 0 ? 'active' : ''"
               @click="setStock(0, 'daily')"
             >
               Daily
             </button>
             <button
+              class="btn btn-warning"
               :class="buttonActive == 1 ? 'active' : ''"
               @click="setStock(1, 'weekly')"
             >
               Weekly
             </button>
             <button
+              class="btn btn-warning"
               :class="buttonActive == 2 ? 'active' : ''"
               @click="setStock(2, 'monthly')"
             >
@@ -25,7 +29,10 @@
             </button>
           </div>
         </v-col>
-        <v-col id="arc" ref="candle" />
+        <v-col class="d-flex justify-content-center">
+          <div id="candleChart " ref="candle"></div>
+        </v-col>
+        
       </v-row>
     </v-container>
   </v-app>
@@ -47,7 +54,9 @@ export default {
     };
   },
 
-    created(){
+    mounted(){
+      console.log("created'a girdi")
+      console.log(this.$route.params)
        if(this.$route.params.symbol){
        this.getDailyValues(this.$route.params.symbol).then(()=>{
          this.dates = this.getDailyResultsKeys;
@@ -56,7 +65,7 @@ export default {
           this.designChart();
       });
     }
-    },
+  },
 
 
   computed: {
@@ -73,7 +82,6 @@ export default {
 
   methods: {
     ...mapActions(["getDailyValues", "getWeeklyValues", "getMonthlyValues"]),
-
      setStock(val, moment) {
       // Changes daily, weekly or monthly data
       this.buttonActive = val;
@@ -88,6 +96,8 @@ export default {
             this.result = this.getDailyResultsValues;
             this.moment = this.dailyValues;
             let area = this.$refs.candle;
+            console.log("this.result")
+            console.log(this.result)
             area.innerHTML = "";
              this.designChart();
           });
@@ -106,10 +116,11 @@ export default {
       }
       if (val == 2) {
         //Montly
+        //error
         this.$router.push({ path: `/symbol/${symbol}/${moment}` });
         this.getMonthlyValues(this.$route.params.symbol).then(() => {
           this.dates = this.getMonthlyResultsKeys;
-          this.result = this.geMonthlyResultsValues;
+          this.result = this.getMonthlyResultsValues;
           this.moment = this.monthlyValues;
           let area = this.$refs.candle;
           area.innerHTML = "";
@@ -144,7 +155,7 @@ export default {
           "transform",
           `translate(${margin.rigth},${height - margin.bottom - 500})`
         )
-        .attr("color", "white")
+        .attr("color", "black")
         .attr("stroke-width", 3)
         .call(d3.axisBottom(axisX))
         .selectAll("text")
@@ -176,7 +187,7 @@ export default {
       container // axis y properties
         .append("g")
         .attr("transform", `translate(${margin.rigth},0)`)
-        .attr("color", "white")
+        .attr("color", "black")
         .attr("stroke-width", 3)
         .call(d3.axisLeft(axisY));
 
@@ -203,7 +214,7 @@ export default {
           "transform",
           `translate(${margin.rigth},${height - margin.bottom})`
         )
-        .attr("color", "white")
+        .attr("color", "black")
         .attr("stroke-width", 3)
         .call(d3.axisBottom(volumeX))
         .selectAll("text")
@@ -216,7 +227,7 @@ export default {
       container // axis y volume properties
         .append("g")
         .attr("transform", `translate(${margin.rigth},${height - 300 - 200})`)
-        .attr("color", "white")
+        .attr("color", "black")
         .attr("stroke-width", 3)
         .call(d3.axisLeft(volumeY));
       container // volume bars and properties
@@ -296,3 +307,24 @@ export default {
   },
 };
 </script>
+
+<style>
+  .page-container {
+  position: relative;
+}
+
+  #candleChart {
+  padding: 5rem;
+  border: 3px solid white;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rise {
+  fill: green;
+}
+.fall {
+  fill: red;
+}
+</style>
