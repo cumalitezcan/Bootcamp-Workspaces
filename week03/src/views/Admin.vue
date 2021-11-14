@@ -3,7 +3,6 @@
     <v-container>
       <v-row>
         <v-treeview hoverable color="warning" :items="items"></v-treeview>
-        <!-- <v-treeview hoverable color="warning" :items="items"></v-treeview> -->
       </v-row>
     </v-container>
   </v-app>
@@ -20,12 +19,16 @@ export default {
           name: "Log records",
           children: [],
         },
+        {
+          id: 2,
+          name: "Unauthorized logs",
+          children: [],
+        },
       ],
     }
   },
   mounted(){
-    
-      console.log("mounted 1.kısım")
+
       console.log(this.pathMoves)
       for (let index = 0; index < this.pathMoves.length; index++) {
         if (this.pathMoves[index]['to:'] == "/error") {
@@ -36,13 +39,9 @@ export default {
               {id:index, name:`to: ${this.pathMoves[index]['to:']}`},
               {id:index, name:`from: ${this.pathMoves[index]['from:']}`}
             ]
-          
             })
         }
       }
-
-      console.log("mounted 2.kısım")
-      console.log(this.pathMoves)
 
       for (let index = 0; index < this.pathMoves.length; index++) {
         if (this.pathMoves[index]['to:'] !== "/error") {
