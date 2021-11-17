@@ -1,4 +1,13 @@
-# week01
+
+## Shopping Cart
+Shopping Cart application with Vue Js (Vue2 - Options Api)
+
+### Techniques
+
+It was made to learn the basic structure of Vue Js.
+ - Components
+ - Props
+ - Emits
 
 ## Project setup
 ```
