@@ -1,4 +1,20 @@
-# week02
+## Hotelliso
+
+https://bootcamp-workspaces.vercel.app/
+
+Hotel Reservation application with Vue Js (Vue3 - Options Api)
+
+### Techniques
+
+It was made to learn the basic structure of Vue Js.
+
+ - Components
+ - Props
+ - Emits
+ - Template Refs
+ - Mixins
+ - Vue Router
+ - Vuelidate
 
 ## Project setup
 ```
